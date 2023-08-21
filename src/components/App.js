@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React, { useState, useEffect } from "react";
+import { Route, Routes } from 'react-router-dom';
+import NavBar from "./NavBar";
+import ProductList from "./ProductList"
 
 function App() {
+  const [groceryAisles, setGroceryAisles] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:9292/aisles")
+    .then((r) => r.json())
+    .then((aisles) => console.log(aisles))
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar />
+        <Routes>
+          <Route path="/aisle_one" element = {<ProductList groceryAisles = {groceryAisles} />} />
+          <Route path="/aisle_two" element = {<ProductList groceryAisles = {groceryAisles} />} />
+          <Route path="/aisle_three" element = {<ProductList groceryAisles = {groceryAisles} />} />
+        </Routes>
     </div>
   );
 }
