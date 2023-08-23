@@ -1,51 +1,55 @@
-import React from "react";
+import { React, useState } from "react";
 import { Form } from "semantic-ui-react";
 
-function useForm(initialState, onSubmit) {
-    const [formData, setFormData] = React.useState(initialState);
+function AisleForm({ groceryAisles, setGroceryAisles }) {
 
-    function handleChange(e) {
-        const { aisle_number, aisle_category } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [aisle_number]: aisle_category,
-        }));
+    const [formData, setFormData] = useState({
+        aisle_number: "",
+        aisle_category: ""
+    })
+    
+    
+    function handleAisleNumberChange(e) {
+        console.log(e.target.value)
+        setFormData({
+            ...formData,
+            aisle_number: e.target.value
+        });
+    }
+    
+    function handleAisleCategoryChange(e) {
+        console.log(e.target.value)
+        setFormData({
+            ...formData,
+            aisle_category: e.target.value
+        });
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
-        onSubmit(formData);
-    }
+        e.preventDefault()
+        fetch("http://localhost:9292/aisles", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify(formData)
+        })
+        .then((r) =>r.json())
+        .then((newAisles) => handleNewAisles(newAisles))
 
-    return { formData, handleChange, handleSubmit };
-}
-
-function AisleForm({ newAisle, handleNewAisle }) {
-    const { formData, handleChange, handleSubmit } = useForm(
-        {
+        setFormData({
             aisle_number: "",
-            aisle_category: "",
-        },
-        (formData) => {
-            fetch("http://localhost:9292/aisles", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
-                .then((r) => r.json())
-                .then((newAisle) => handleNewAisle(newAisle));
-        }
-    );
-
-    function handleNewAisle(newAisle) {
-        setGroceryAisles([...groceryAisles, newAisle]);
+            aisle_category: ""
+        })
     }
 
+    function handleNewAisles(newAisle) {
+        setGroceryAisles((groceryAisles) => [...groceryAisles, newAisle])
+    }
+
+    
     return (
         <div className="form-box">
-            <h1>List A Work For Auction:</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group widths="equal">
                     <Form.Input
@@ -53,7 +57,7 @@ function AisleForm({ newAisle, handleNewAisle }) {
                         label="Aisle Number:"
                         placeholder="4"
                         name="aisle_number"
-                        onChange={handleChange}
+                        onChange={handleAisleNumberChange}
                         value={formData.aisle_number}
                     />
                     <Form.Input
@@ -61,7 +65,7 @@ function AisleForm({ newAisle, handleNewAisle }) {
                         label="Aisle Category:"
                         placeholder="spices"
                         name="aisle_category"
-                        onChange={handleChange}
+                        onChange={handleAisleCategoryChange}
                         value={formData.aisle_category}
                     />
                 </Form.Group>
