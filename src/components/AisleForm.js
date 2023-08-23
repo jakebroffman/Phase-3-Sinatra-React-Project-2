@@ -8,21 +8,13 @@ function AisleForm({ groceryAisles, setGroceryAisles }) {
         aisle_category: ""
     })
     
-    
-    function handleAisleNumberChange(e) {
+    function handleInputChange(e) {
         console.log(e.target.value)
-        setFormData({
-            ...formData,
-            aisle_number: e.target.value
-        });
-    }
-    
-    function handleAisleCategoryChange(e) {
-        console.log(e.target.value)
-        setFormData({
-            ...formData,
-            aisle_category: e.target.value
-        });
+        const { name, value } = e.target
+        setFormData((prevData) =>({
+            ...prevData,
+            [name]: value
+        }));
     }
 
     function handleSubmit(e) {
@@ -57,7 +49,7 @@ function AisleForm({ groceryAisles, setGroceryAisles }) {
                         label="Aisle Number:"
                         placeholder="4"
                         name="aisle_number"
-                        onChange={handleAisleNumberChange}
+                        onChange={handleInputChange}
                         value={formData.aisle_number}
                     />
                     <Form.Input
@@ -65,7 +57,7 @@ function AisleForm({ groceryAisles, setGroceryAisles }) {
                         label="Aisle Category:"
                         placeholder="spices"
                         name="aisle_category"
-                        onChange={handleAisleCategoryChange}
+                        onChange={handleInputChange}
                         value={formData.aisle_category}
                     />
                 </Form.Group>
