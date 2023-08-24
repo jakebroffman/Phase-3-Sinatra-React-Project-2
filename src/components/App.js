@@ -15,7 +15,7 @@ function App() {
     .then((aisles) => setGroceryAisles(aisles))
   }, []);
 
-console.log(groceryAisles)
+
 
   return (
     <div>
