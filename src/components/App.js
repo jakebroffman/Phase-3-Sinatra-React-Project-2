@@ -23,7 +23,7 @@ function App() {
       <h3>Scroll to the bottom for the form to add new products to your store's inventory!</h3>
       <button className="form_button" onClick={() => toggleShow(!show)}>Add An Aisle:</button>
       {show && <AisleForm className="aisle_form" setGroceryAisles={setGroceryAisles}/>}
-      <AisleLinks groceryAisles={groceryAisles} />
+      <AisleLinks groceryAisles={groceryAisles} setGroceryAisles={setGroceryAisles} />
         <Routes>
           <Route path="/aisles/:id" element = {<ProductList groceryAisles = {groceryAisles} />} />
         </Routes>
