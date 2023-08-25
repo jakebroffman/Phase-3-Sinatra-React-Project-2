@@ -1,27 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import Product from "./Product";
-import { Container, Card } from "semantic-ui-react"
+import { Container, Card } from "semantic-ui-react";
+import ProductForm from "./ProductForm";
 
-function ProductList({groceryAisles}) {
-    const groceriesToDisplay = groceryAisles.map((aisle) => {
+
+function ProductList({groceryAisles, setGroceryAisles}) {
+
+    const [show, toggleShow] = useState(false);
+
+
+    // let { id } = useParams();
+
+    // if (groceryAisles.id === id) {
+
+    const groceryAisle = groceryAisles.map((aisle) => {
         return(
-            <div className="product_card" key={aisle.id}>
-                <br></br>
-                <Product className="productCard" products={aisle.products}/>
-                <br></br>
-            </div>
-        )
-    })
+        <Container key={aisle.id}>
+            <h1 className="des">Products in aisle:{aisle.id} </h1>
+            <button onClick={() => toggleShow(!show)}>Add a product to aisle:{aisle.id}</button>
+            {show && <ProductForm className="product_form" setGroceryAisles={setGroceryAisles} aisleId={aisle.id} />}
+                <Card className="art-card" itemsPerRow={5}>
+                    <Product aisle={aisle}/>
+                </Card>
+        </Container>
+    )}) ;
+
     
         return (
-            <Container>
-            <h1 className="des">Products in </h1>
-                <Card className="art-card" itemsPerRow={5}>
-                    {groceriesToDisplay}
-                </Card>
-            </Container>
-        );
-}
+            <div>
+                {groceryAisle}
+            </div>
+        );}
+// }}
 
 export default ProductList;
 
