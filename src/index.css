@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav-bar {
+  position: relative;
+  font-size: large;
+  text-align: center;
+  font-weight: bold;
+}
+
+h3 {
+text-align: center;
+}
+
+h2 {
+  text-align: center;
+}

@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Form } from "semantic-ui-react";
 import { useParams } from "react-router-dom"
 
-function ProductForm({ setGroceryAisles, aisleId }) {
+function ProductForm({ setGroceryAisles }) {
 
     let { id } = useParams();
 
@@ -60,8 +60,6 @@ function ProductForm({ setGroceryAisles, aisleId }) {
             });
         });
     }
-    
-
     
     return (
         <div className="form-box">
