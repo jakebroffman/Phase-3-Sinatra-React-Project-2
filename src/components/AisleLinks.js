@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Link } from 'react-router-dom'
-import ProductList from "./ProductList";
+import AisleForm from "./AisleForm";
 
 function AisleLinks({groceryAisles, setGroceryAisles}) {
     const [show, toggleShow] = useState(false);
@@ -8,10 +8,13 @@ function AisleLinks({groceryAisles, setGroceryAisles}) {
     
 
 
-   const aisleList = groceryAisles.map((aisle) => <div key= {aisle.id}><Link to={`/aisles/${aisle.id}`} onClick={() => toggleShow(!show)} key={aisle.id}>Aisle #{aisle.id}</Link>{show && <ProductList groceryAisles={groceryAisles} setGroceryAisles={setGroceryAisles} />}</div>)
-
+   const aisleList = groceryAisles.map((aisle) => <div key= {aisle.id}><Link to={`/aisles/${aisle.id}`}>{aisle.aisle_number}</Link></div>)
     return(
-        <div>{aisleList}</div>
+        <div>
+            <button className="form_button" onClick={() => toggleShow(!show)}>Add An Aisle:</button>
+            {show && <AisleForm className="aisle_form" setGroceryAisles={setGroceryAisles}/>}
+            {aisleList}
+        </div>
     );
 }
 
