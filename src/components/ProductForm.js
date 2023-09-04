@@ -1,12 +1,15 @@
 import { React, useState } from "react";
 import { Form } from "semantic-ui-react";
+import { useParams } from "react-router-dom"
 
-function ProductForm({ aisleId, setGroceryAisles }) {
+function ProductForm({ setGroceryAisles, aisleId }) {
+
+    let { id } = useParams();
 
     const [formData, setFormData] = useState({
         name: "",
         price: "",
-        aisle_id: aisleId,
+        aisle_id: id,
     })
     
     function handleInputChange(e) {
@@ -19,27 +22,45 @@ function ProductForm({ aisleId, setGroceryAisles }) {
     }
 
     function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+    
+        const aisleId = parseInt(id);
+    
         fetch("http://localhost:9292/products", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body:JSON.stringify(formData)
+            body: JSON.stringify({
+                ...formData,
+                aisle_id: aisleId, 
+            }),
         })
-        .then((r) =>r.json())
-        .then((newProduct) => handleNewProduct(newProduct))
-
-        setFormData({
-            name: "",
-            price: "",
-            aisle_id: aisleId,
-        })
+        .then((r) => r.json())
+        .then((newProduct) => {
+            
+            setGroceryAisles((prevAisles) => {
+                return prevAisles.map((aisle) => {
+                    if (aisle.id === aisleId) {
+                        return {
+                            ...aisle,
+                            products: [...aisle.products, newProduct],
+                        };
+                    } else {
+                        return aisle;
+                    }
+                });
+            });
+    
+            
+            setFormData({
+                name: "",
+                price: "",
+                aisle_id: aisleId,
+            });
+        });
     }
-
-    function handleNewProduct(newProduct) {
-        setGroceryAisles((groceryAisles) => [...groceryAisles, newProduct])
-    }
+    
 
     
     return (
@@ -63,7 +84,7 @@ function ProductForm({ aisleId, setGroceryAisles }) {
                         value={formData.aisle_category}
                     />
                 </Form.Group>
-                <Form.Button>Submit</Form.Button>
+                <Form.Button>Add Product</Form.Button>
             </Form>
         </div>
     );
