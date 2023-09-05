@@ -38,6 +38,11 @@ This web app is a grocery store inventory tracker created using Create React App
 
 *Caption: Updating an existing product's details in aisle 2.*
 
+## Video Walkthrough
+
+[![Watch the Video Walkthrough](https://img.youtube.com/vi/M6n4rmrumAc/0.jpg)](https://youtu.be/M6n4rmrumAc)
+
+
 ## Installation
 
 1. Clone the repository: https://github.com/jakebroffman/Phase-3-Sinatra-React-Project-2
