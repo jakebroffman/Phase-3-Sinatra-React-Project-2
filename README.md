@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Grocery Store Inventory Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This web app is a grocery store inventory tracker created using Create React App. It allows users to manage grocery store aisles and products.
 
-## Available Scripts
+## Components
 
-In the project directory, you can run:
+- `App.js`: The main application component.
+- `AisleLinks.js`: Component for displaying a list of aisles.
+- `AisleForm.js`: Component for adding a new aisle to the database.
+- `ProductList.js`: Component for displaying products in an aisle.
+- `Product.js`: Component for displaying individual product details.
+- `ProductForm.js`: Component for adding a new product to an aisle.
+- `EditProductForm.js`: Component for editing an existing product's name or price.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Upon loading, the app fetches and displays a list of aisles from the backend database.
+- Users can add new aisles to the database using the `AisleForm` component.
+- Users can view the products contained in each aisle using the `ProductList` component.
+- Products can be added to an aisle using the `ProductForm` component.
+- Users can edit existing product names or prices using the `EditProductForm` component.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+![Screenshot 1](app_screenshots/ScreenShot1.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*Caption: This is the app's main interface upon loading.*
 
-### `npm run build`
+![Screenshot 2](app_screenshots/ScrrenShot2.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*Caption: App displaying a list of items in aisle 2 after clicking the #2 link on the main interface.*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Screenshot 3](app_screenshots/ScreenShot3.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*Caption: Adding a product to aisle 2.*
 
-### `npm run eject`
+![Screenshot 4](app_screenshots/ScreenShot4.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+*Caption: Updating an existing product's details in aisle 2.*
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository: https://github.com/jakebroffman/Phase-3-Sinatra-React-Project-2
+2. Change into the project directory: cd Phase-3-Sinatra-React-Project-2
+3. Install dependencies: npm install
+4. Start the development server: npm start
+5. Open your web browser and visit http://localhost:3000 to view the app.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Backend Integration
 
-## Learn More
+This app was built to utilize a backend built around an ActiveRecord API, the repository for the backend created can be found here: https://github.com/jakebroffman/phase-3-sinatra-react-project
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you'd like to contribute to this project, please follow our Contributing Guidelines (CONTRIBUTING.md).
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project is licensed under the MIT License (LICENSE).
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
