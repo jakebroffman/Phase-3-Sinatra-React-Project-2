@@ -26,7 +26,8 @@ function AisleForm({ groceryAisles, setGroceryAisles }) {
             },
             body:JSON.stringify(formData)
         })
-        .then((r) =>r.json())
+        .then((r) =>{ console.log(r)
+            return r.json()})
         .then((newAisles) => handleNewAisles(newAisles))
 
         setFormData({

@@ -8,6 +8,8 @@ import ProductList from "./ProductList"
 function App() {
   const [groceryAisles, setGroceryAisles] = useState([]);
 
+  console.log(groceryAisles)
+
   useEffect(() => {
     fetch("http://localhost:9292/aisles")
     .then((r) => r.json())

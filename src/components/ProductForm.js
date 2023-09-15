@@ -79,7 +79,7 @@ function ProductForm({ setGroceryAisles }) {
                         placeholder="6"
                         name="price"
                         onChange={handleInputChange}
-                        value={formData.aisle_category}
+                        value={formData.price}
                     />
                 </Form.Group>
                 <Form.Button>Add Product</Form.Button>
